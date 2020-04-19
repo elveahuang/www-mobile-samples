@@ -8,9 +8,10 @@ import {UtilsService} from '@commons/core/services/utils.service';
     templateUrl : 'app.component.html'
 })
 export class AppComponent {
+
     constructor(
-        private utilService: UtilsService,
-        private platform: Platform
+        private utilService : UtilsService,
+        private platform : Platform
     ) {
         this.initializeApp();
     }
@@ -20,4 +21,5 @@ export class AppComponent {
             this.utilService.initializeApp().then();
         });
     }
+
 }
