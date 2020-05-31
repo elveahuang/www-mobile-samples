@@ -27,9 +27,6 @@
             ],
             "@www/*" : [
                 "./projects/www/src/*"
-            ],
-            "@showcase/*" : [
-                "./projects/showcase/src/*"
             ]
         }
     },

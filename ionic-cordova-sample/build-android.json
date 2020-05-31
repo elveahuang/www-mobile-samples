@@ -1,0 +1,18 @@
+{
+    "android" : {
+        "debug" : {
+            "keystore" : "./build/android/android.jks",
+            "storePassword" : "android",
+            "alias" : "android",
+            "password" : "android",
+            "keystoreType" : "PKCS12"
+        },
+        "release" : {
+            "keystore" : "./build/android/android.jks",
+            "storePassword" : "android",
+            "alias" : "android",
+            "password" : "android",
+            "keystoreType" : "PKCS12"
+        }
+    }
+}

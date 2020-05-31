@@ -17,7 +17,6 @@ $RECYCLE.BIN/
 log.txt
 yarn.lock
 package-lock.json
-build-ios.json
 npm-debug.log*
 
 /.idea
