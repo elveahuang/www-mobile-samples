@@ -3,5 +3,14 @@
 </template>
 
 <script lang="ts">
-    export default {}
+    import {defineComponent, onMounted} from 'vue';
+
+    export default defineComponent({
+        setup() {
+            onMounted(() => {
+                console.log('App onMounted...')
+            })
+            return {};
+        }
+    })
 </script>
