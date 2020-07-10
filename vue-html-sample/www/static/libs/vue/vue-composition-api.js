@@ -618,7 +618,7 @@
       // copy symbols over
       Object.getOwnPropertySymbols(value).forEach(function (s) { return (obj[s] = value[s]); });
       // copy __ob__
-      if (value.__ob__) {
+      if (hasOwn(value, '__ob__')) {
           Object.defineProperty(obj, '__ob__', {
               enumerable: false,
               value: value.__ob__,
@@ -893,11 +893,11 @@
       };
       var callback = createScheduler(applyCb);
       if (options.immediate) {
-          var originalCallbck_1 = callback;
+          var originalCallback_1 = callback;
           // `shiftCallback` is used to handle the first sync effect run.
           // The subsequent callbacks will redirect to `callback`.
           var shiftCallback_1 = function (n, o) {
-              shiftCallback_1 = originalCallbck_1;
+              shiftCallback_1 = originalCallback_1;
               applyCb(n, o);
           };
           callback = function (n, o) {
