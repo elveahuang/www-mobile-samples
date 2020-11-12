@@ -16,9 +16,14 @@ export class AppComponent {
         this.initializeApp();
     }
 
-    initializeApp() {
-        this.platform.ready().then(() => {
-            this.utilService.initializeApp().then();
+    initializeApp() : void {
+        this.platform.ready().then((readySource : string) => {
+            console.log('Platform ready from', readySource);
+            this.utilService.initializeApp().then(() => {
+                console.log('Application initialize done.');
+            });
+        }).catch(() => {
+            console.log('Platform ready');
         });
     }
 

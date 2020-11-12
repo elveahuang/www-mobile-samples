@@ -5,21 +5,20 @@ import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 
 /**
  * 工具类的方法服务
- * 封装（提示框等）的基本操作
  */
 @Injectable()
 export class UtilsService {
 
-    constructor(private statusBar: StatusBar,
-                private splashScreen: SplashScreen,
-                private platform: Platform,
+    constructor(private statusBar : StatusBar,
+                private splashScreen : SplashScreen,
+                private platform : Platform,
     ) {
     }
 
     /**
      * 是否是Cordova或者Capacitor应用
      */
-    isHybrid(): Promise<boolean> {
+    isHybrid() : Promise<boolean> {
         return this.platform.ready().then(() => {
             return this.platform.is('hybrid');
         });
@@ -28,7 +27,7 @@ export class UtilsService {
     /**
      * 是否是安卓设备
      */
-    isAndroid(): Promise<boolean> {
+    isAndroid() : Promise<boolean> {
         return this.platform.ready().then(() => {
             return this.platform.is('android');
         });
@@ -37,7 +36,7 @@ export class UtilsService {
     /**
      * 初始化
      */
-    async initializeApp(): Promise<void> {
+    async initializeApp() : Promise<void> {
         if (await this.isHybrid()) {
             if (await this.isAndroid()) {
                 this.statusBar.styleLightContent();

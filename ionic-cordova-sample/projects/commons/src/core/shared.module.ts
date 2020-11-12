@@ -9,8 +9,6 @@ import {VideoPlayerComponent} from '@commons/core/components/video-player.compon
 const SharedComponents = [
     VideoPlayerComponent
 ];
-const EntryComponents = [];
-const SharedDirectives = [];
 
 @NgModule({
     imports : [
@@ -20,22 +18,15 @@ const SharedDirectives = [];
         RouterModule,
         IonicModule,
     ],
-    entryComponents : [
-        ...EntryComponents,
-    ],
     declarations : [
-        ...SharedComponents,
-        ...SharedDirectives,
+        ...SharedComponents
     ],
     exports : [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
         RouterModule,
-        IonicModule,
-        //
-        ...SharedComponents,
-        ...SharedDirectives,
+        IonicModule
     ],
 })
 export class SharedModule {

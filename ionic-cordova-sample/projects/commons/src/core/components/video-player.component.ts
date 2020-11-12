@@ -1,23 +1,23 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
-import videojs from 'video.js';
+import videojs, {VideoJsPlayer} from 'video.js';
 
 @Component({
-    selector : 'video-player',
+    selector : 'app-video-player',
     templateUrl : './video-player.component.html',
     styleUrls : ['./video-player.component.scss']
 })
 export class VideoPlayerComponent implements OnInit, OnDestroy, AfterViewInit {
     @ViewChild('targetElement', {static : false})
-    public targetElement: ElementRef;
+    public targetElement : ElementRef;
 
     @Input()
-    options: {
-        fluid: boolean,
-        aspectRatio: string,
-        autoplay: boolean,
-        sources: {
-            src: string,
-            type: string,
+    options : {
+        fluid : boolean,
+        aspectRatio : string,
+        autoplay : boolean,
+        sources : {
+            src : string,
+            type : string,
         }[],
     };
 
@@ -25,24 +25,24 @@ export class VideoPlayerComponent implements OnInit, OnDestroy, AfterViewInit {
      * 删除问题
      */
     @Output()
-    playerReady: EventEmitter<videojs.Player> = new EventEmitter();
+    playerReady : EventEmitter<videojs.Player> = new EventEmitter<VideoJsPlayer>();
 
-    player: videojs.Player;
+    player : videojs.Player;
 
-    constructor(public elementRef: ElementRef) {
+    constructor(public elementRef : ElementRef) {
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() : void {
         if (this.player) {
             this.player.dispose();
         }
     }
 
-    ngOnInit(): void {
+    ngOnInit() : void {
         console.log('ngOnInit');
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit() : void {
         console.log('ngAfterViewInit');
         this.player = videojs(this.targetElement.nativeElement, this.options, () => {
             console.log('onPlayerReady', this);

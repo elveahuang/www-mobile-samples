@@ -14,7 +14,7 @@ import {UtilsService} from '@commons/core/services/utils.service';
     ]
 })
 export class CoreNativeModule {
-    static forRoot(): ModuleWithProviders {
+    static forRoot() : ModuleWithProviders<CoreNativeModule> {
         return {
             ngModule : CoreNativeModule,
         };

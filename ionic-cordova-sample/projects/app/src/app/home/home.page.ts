@@ -8,12 +8,9 @@ import videojs from 'video.js';
 })
 export class HomePage {
 
-    constructor() {
-    }
+    player : videojs.Player;
 
-    player: videojs.Player;
-
-    onPlayerReady(player: videojs.Player) {
+    onPlayerReady(player : videojs.Player) : void {
         this.player = player;
         console.log(player);
     }

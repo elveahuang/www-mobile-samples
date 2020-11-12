@@ -1,0 +1,4 @@
+build/*
+public/*
+projects/*/src/zone-flags.ts
+projects/*/src/test.ts

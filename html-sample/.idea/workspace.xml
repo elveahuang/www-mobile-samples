@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24f4e5c0-0f0a-48c7-b764-436d36f9e2be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../ionic-cordova-sample/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ionic-cordova-sample/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ionic-cordova-sample/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ionic-cordova-sample/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ionic-cordova-sample/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ionic-cordova-sample/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../vue-sample/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-sample/package.json" afterDir="false" />
     </list>
@@ -51,6 +51,9 @@
       <option name="presentableId" value="Default" />
       <updated>1603767678583</updated>
       <workItem from="1603767679732" duration="4370000" />
+      <workItem from="1604549924830" duration="402000" />
+      <workItem from="1604568839788" duration="5000" />
+      <workItem from="1605167727925" duration="256000" />
     </task>
     <servers />
   </component>
