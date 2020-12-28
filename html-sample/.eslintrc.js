@@ -1,4 +1,5 @@
 module.exports = {
+    root: true,
     parserOptions: {
         ecmaVersion: 2020,
         sourceType: 'module',
@@ -7,5 +8,6 @@ module.exports = {
     plugins: ['prettier'],
     env: {
         browser: true,
+        node: true,
     },
 };
