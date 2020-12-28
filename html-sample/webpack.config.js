@@ -27,6 +27,7 @@ module.exports = () => ({
     },
     module: {
         rules: [
+            { test: /\.hbs$/, loader: 'handlebars-loader' },
             {
                 test: /\.(js|jsx)x?$/,
                 exclude: /node_modules/,
