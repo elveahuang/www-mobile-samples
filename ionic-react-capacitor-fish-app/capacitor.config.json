@@ -1,0 +1,12 @@
+{
+    "appId": "cn.elvea.ionic.fish",
+    "appName": "配粉神器",
+    "bundledWebRuntime": false,
+    "npmClient": "npm",
+    "webDir": "build",
+    "plugins": {
+        "SplashScreen": {
+            "launchShowDuration": 0
+        }
+    }
+}

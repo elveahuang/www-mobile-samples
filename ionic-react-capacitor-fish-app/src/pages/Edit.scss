@@ -1,0 +1,13 @@
+table.edit-table,
+table.edit-table tr th,
+table.edit-table tr td {
+    border: 1px solid #0094ff;
+}
+
+table.edit-table {
+    width: 100%;
+    min-height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border-collapse: collapse;
+}
