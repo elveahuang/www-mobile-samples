@@ -1,7 +1,0 @@
-{
-  "name": "ionic-sample",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
