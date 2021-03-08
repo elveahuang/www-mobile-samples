@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button routerLink="/">
+                <ion-icon name="arrow-back-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Form</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col>样品名</ion-col>
+            <ion-col>配比</ion-col>
+            <ion-col>蛋白</ion-col>
+            <ion-col>灰份</ion-col>
+            <ion-col>新鲜度</ion-col>
+            <ion-col>水分</ion-col>
+            <ion-col>脂肪</ion-col>
+            <ion-col>价格</ion-col>
+        </ion-row>
+        <ion-row *ngFor="let item of entity.items">
+            <ion-col>
+                <ion-text>{{ item.yangPinMing }}</ion-text>
+            </ion-col>
+            <ion-col>
+                <ion-input></ion-input>
+            </ion-col>
+            <ion-col>
+                <ion-input></ion-input>
+            </ion-col>
+            <ion-col>
+                <ion-input></ion-input>
+            </ion-col>
+            <ion-col>
+                <ion-input></ion-input>
+            </ion-col>
+            <ion-col>
+                <ion-input></ion-input>
+            </ion-col>
+            <ion-col>
+                <ion-input></ion-input>
+            </ion-col>
+            <ion-col>
+                <ion-input></ion-input>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-text>
+                    {{ entity.totalResult.yangPinMing }}
+                </ion-text>
+            </ion-col>
+            <ion-col>
+                <ion-input></ion-input>
+            </ion-col>
+            <ion-col>
+                <ion-input></ion-input>
+            </ion-col>
+            <ion-col>
+                <ion-input></ion-input>
+            </ion-col>
+            <ion-col>
+                <ion-input></ion-input>
+            </ion-col>
+            <ion-col>
+                <ion-input></ion-input>
+            </ion-col>
+            <ion-col>
+                <ion-input></ion-input>
+            </ion-col>
+            <ion-col>
+                <ion-input></ion-input>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

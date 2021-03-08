@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets">
-    <name>Ionic Cordova Sample</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
+<widget id="cn.elvea.ionic.fish" version="0.0.1" xmlns="http://www.w3.org/ns/widgets">
+    <name>配粉神器</name>
+    <description>配粉神器</description>
+    <author email="elvea.huang@gmail.com" href="https://elvea.cn/">Elvea Huang</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
