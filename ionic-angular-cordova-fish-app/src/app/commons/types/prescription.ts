@@ -2,9 +2,13 @@ import FishMeal from './fish-meal';
 
 class Prescription {
     /**
-     * 配方名
+     * 配方名称
      */
     title?: string;
+    /**
+     * 配方目的
+     */
+    objective?: string;
     /**
      * 样品
      */

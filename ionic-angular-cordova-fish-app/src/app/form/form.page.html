@@ -9,70 +9,134 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-grid>
-        <ion-row>
-            <ion-col>样品名</ion-col>
-            <ion-col>配比</ion-col>
-            <ion-col>蛋白</ion-col>
-            <ion-col>灰份</ion-col>
-            <ion-col>新鲜度</ion-col>
-            <ion-col>水分</ion-col>
-            <ion-col>脂肪</ion-col>
-            <ion-col>价格</ion-col>
-        </ion-row>
-        <ion-row *ngFor="let item of entity.items">
-            <ion-col>
-                <ion-text>{{ item.yangPinMing }}</ion-text>
+    <ion-grid class="data-grid">
+        <ion-row class="data-grid-header">
+            <ion-col class="ion-text-center">
+                <ion-text>样品</ion-text>
             </ion-col>
-            <ion-col>
-                <ion-input></ion-input>
+            <ion-col class="ion-text-center">
+                <ion-text>配比</ion-text>
             </ion-col>
-            <ion-col>
-                <ion-input></ion-input>
+            <ion-col class="ion-text-center">
+                <ion-text>蛋白</ion-text>
             </ion-col>
-            <ion-col>
-                <ion-input></ion-input>
+            <ion-col class="ion-text-center">
+                <ion-text>灰份</ion-text>
             </ion-col>
-            <ion-col>
-                <ion-input></ion-input>
+            <ion-col class="ion-text-center">
+                <ion-text>新鲜度</ion-text>
             </ion-col>
-            <ion-col>
-                <ion-input></ion-input>
+            <ion-col class="ion-text-center">
+                <ion-text>水分</ion-text>
             </ion-col>
-            <ion-col>
-                <ion-input></ion-input>
+            <ion-col class="ion-text-center">
+                <ion-text>脂肪</ion-text>
             </ion-col>
-            <ion-col>
-                <ion-input></ion-input>
+            <ion-col class="ion-text-center">
+                <ion-text>价格</ion-text>
             </ion-col>
         </ion-row>
-        <ion-row>
+        <ion-row class="data-grid-content" *ngFor="let item of entity.items">
             <ion-col>
-                <ion-text>
-                    {{ entity.totalResult.yangPinMing }}
-                </ion-text>
+                <ion-input
+                    class="ion-no-padding"
+                    (ionChange)="inputChange()"
+                    [(ngModel)]="item.yangPinMing"
+                ></ion-input>
             </ion-col>
             <ion-col>
-                <ion-input></ion-input>
+                <ion-input class="ion-no-padding" type="number" (ionChange)="inputChange()" [(ngModel)]="item.peiBi">
+                </ion-input>
             </ion-col>
             <ion-col>
-                <ion-input></ion-input>
+                <ion-input class="ion-no-padding" type="number" (ionChange)="inputChange()" [(ngModel)]="item.danBai">
+                </ion-input>
             </ion-col>
             <ion-col>
-                <ion-input></ion-input>
+                <ion-input class="ion-no-padding" type="number" (ionChange)="inputChange()" [(ngModel)]="item.huiFen">
+                </ion-input>
             </ion-col>
             <ion-col>
-                <ion-input></ion-input>
+                <ion-input
+                    class="ion-no-padding"
+                    type="number"
+                    (ionChange)="inputChange()"
+                    [(ngModel)]="item.xinXianDu"
+                >
+                </ion-input>
             </ion-col>
             <ion-col>
-                <ion-input></ion-input>
+                <ion-input class="ion-no-padding" type="number" (ionChange)="inputChange()" [(ngModel)]="item.shuiFen">
+                </ion-input>
             </ion-col>
             <ion-col>
-                <ion-input></ion-input>
+                <ion-input class="ion-no-padding" type="number" (ionChange)="inputChange()" [(ngModel)]="item.zhiFan">
+                </ion-input>
             </ion-col>
             <ion-col>
-                <ion-input></ion-input>
+                <ion-input class="ion-no-padding" type="number" (ionChange)="inputChange()" [(ngModel)]="item.jiaGe">
+                </ion-input>
+            </ion-col>
+        </ion-row>
+        <ion-row class="data-grid-footer">
+            <ion-col>
+                <ion-text class="ion-no-padding">{{ entity.totalResult.yangPinMing }}</ion-text>
+            </ion-col>
+            <ion-col>
+                <ion-text class="ion-no-padding">{{ entity.totalResult.peiBi }}</ion-text>
+            </ion-col>
+            <ion-col>
+                <ion-text class="ion-no-padding">{{ entity.totalResult.danBai }}</ion-text>
+            </ion-col>
+            <ion-col>
+                <ion-text class="ion-no-padding">{{ entity.totalResult.huiFen }}</ion-text>
+            </ion-col>
+            <ion-col>
+                <ion-text class="ion-no-padding">{{ entity.totalResult.xinXianDu }}</ion-text>
+            </ion-col>
+            <ion-col>
+                <ion-text class="ion-no-padding">{{ entity.totalResult.shuiFen }}</ion-text>
+            </ion-col>
+            <ion-col>
+                <ion-text class="ion-no-padding">{{ entity.totalResult.zhiFan }}</ion-text>
+            </ion-col>
+            <ion-col>
+                <ion-text class="ion-no-padding">{{ entity.totalResult.jiaGe }}</ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row class="data-grid-footer">
+            <ion-col>
+                <ion-text class="ion-no-padding">{{ entity.finalResult.yangPinMing }}</ion-text>
+            </ion-col>
+            <ion-col>
+                <ion-text class="ion-no-padding"></ion-text>
+            </ion-col>
+            <ion-col>
+                <ion-text class="ion-no-padding">{{ entity.finalResult.danBai }}</ion-text>
+            </ion-col>
+            <ion-col>
+                <ion-text class="ion-no-padding">{{ entity.finalResult.huiFen }}</ion-text>
+            </ion-col>
+            <ion-col>
+                <ion-text class="ion-no-padding">{{ entity.finalResult.xinXianDu }}</ion-text>
+            </ion-col>
+            <ion-col>
+                <ion-text class="ion-no-padding">{{ entity.finalResult.shuiFen }}</ion-text>
+            </ion-col>
+            <ion-col>
+                <ion-text class="ion-no-padding">{{ entity.finalResult.zhiFan }}</ion-text>
+            </ion-col>
+            <ion-col>
+                <ion-text class="ion-no-padding">{{ entity.finalResult.jiaGe }}</ion-text>
             </ion-col>
         </ion-row>
     </ion-grid>
+    <ion-item>
+        <ion-label>配方名称</ion-label>
+        <ion-input [(ngModel)]="entity.title"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">配方目的</ion-label>
+        <ion-textarea [(ngModel)]="entity.objective"></ion-textarea>
+    </ion-item>
 </ion-content>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import Prescription from '../commons/types/prescription';
-import { createPrescription } from '../commons/utils';
+import { PrescriptionService } from '../commons/service/prescription.service';
 
 @Component({
     selector: 'app-page-form',
@@ -8,5 +8,14 @@ import { createPrescription } from '../commons/utils';
     styleUrls: ['form.page.scss'],
 })
 export class FormPage {
-    entity: Prescription = createPrescription();
+    entity: Prescription;
+
+    constructor(private service: PrescriptionService) {
+        this.entity = service.calcPrescription(service.createPrescription());
+    }
+
+    public inputChange(): void {
+        this.service.calcPrescription(this.entity);
+        console.log(this.entity);
+    }
 }
