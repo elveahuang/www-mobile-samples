@@ -2,6 +2,10 @@ import FishMeal from './fish-meal';
 
 class Prescription {
     /**
+     * ID
+     */
+    uuid?: string;
+    /**
      * 配方名称
      */
     title?: string;

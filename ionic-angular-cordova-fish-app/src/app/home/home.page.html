@@ -8,4 +8,8 @@
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true"> </ion-content>
+<ion-content [fullscreen]="true">
+    <ion-item class="data-grid-content" *ngFor="let p of list">
+        <ion-text>{{ p.uuid }}</ion-text>
+    </ion-item>
+</ion-content>

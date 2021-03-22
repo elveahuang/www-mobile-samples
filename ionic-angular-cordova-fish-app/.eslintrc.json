@@ -33,8 +33,19 @@
                         "style": "camelCase"
                     }
                 ],
-                "@angular-eslint/component-class-suffix": ["error", { "suffixes": ["Page", "Component"] }],
-                "@angular-eslint/directive-class-suffix": ["error", { "suffixes": ["Page", "Component", "Directive"] }],
+                "@angular-eslint/component-class-suffix": [
+                    "error",
+                    {
+                        "suffixes": ["Page", "Component"]
+                    }
+                ],
+                "@angular-eslint/directive-class-suffix": [
+                    "error",
+                    {
+                        "suffixes": ["Page", "Component", "Directive"]
+                    }
+                ],
+                "@typescript-eslint/no-floating-promises": "off",
                 "@typescript-eslint/no-unsafe-assignment": "off",
                 "@typescript-eslint/no-unsafe-call": "off",
                 "@typescript-eslint/no-empty-function": "off"

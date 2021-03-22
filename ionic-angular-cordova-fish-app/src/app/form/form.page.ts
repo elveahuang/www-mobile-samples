@@ -18,4 +18,10 @@ export class FormPage {
         this.service.calcPrescription(this.entity);
         console.log(this.entity);
     }
+
+    public save(): void {
+        this.service.savePrescription(this.entity).then(() => {
+            console.log('...');
+        });
+    }
 }

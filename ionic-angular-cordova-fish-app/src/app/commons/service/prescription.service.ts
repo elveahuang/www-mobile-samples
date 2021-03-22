@@ -6,14 +6,38 @@ import Prescription from '../types/prescription';
 import { isEmpty, round } from 'lodash';
 import FishMeal from '../types/fish-meal';
 import { Storage } from '@ionic/storage-angular';
+import { generateUuid } from '../utils';
 
 @Injectable()
 export class PrescriptionService {
-    constructor(private storage: Storage) {}
+    constructor(private storage: Storage) {
+        this.init();
+    }
 
-    public getPrescriptionList(): void {}
+    init(): void {
+        this.storage.create().then();
+    }
 
-    public savePrescriptionList(): void {}
+    public async getPrescriptionList(): Promise<Prescription[]> {
+        const list: Prescription[] = [];
+        const map: Map<string, Prescription> = await this.storage.get('DATA');
+        for (const p of map.values()) {
+            list.push(p);
+        }
+        return list;
+    }
+
+    public async savePrescription(p: Prescription): Promise<void> {
+        if (isEmpty(p.uuid)) {
+            p.uuid = generateUuid();
+        }
+        let map: Map<string, Prescription> = await this.storage.get('DATA');
+        if (isEmpty(map)) {
+            map = new Map<string, Prescription>();
+        }
+        map.set(p.uuid, p);
+        await this.storage.set('DATA', map);
+    }
 
     public createPrescription(): Prescription {
         const p = new Prescription();
