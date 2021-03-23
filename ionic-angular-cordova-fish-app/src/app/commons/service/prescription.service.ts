@@ -21,8 +21,10 @@ export class PrescriptionService {
     public async getPrescriptionList(): Promise<Prescription[]> {
         const list: Prescription[] = [];
         const map: Map<string, Prescription> = await this.storage.get('DATA');
-        for (const p of map.values()) {
-            list.push(p);
+        if (!isEmpty(map)) {
+            for (const p of map.values()) {
+                list.push(p);
+            }
         }
         return list;
     }
@@ -36,6 +38,22 @@ export class PrescriptionService {
             map = new Map<string, Prescription>();
         }
         map.set(p.uuid, p);
+        await this.storage.set('DATA', map);
+    }
+
+    public async getPrescription(uuid: string): Promise<Prescription> {
+        const map: Map<string, Prescription> = await this.storage.get('DATA');
+        if (!isEmpty(map)) {
+            return map.get(uuid);
+        }
+        return null;
+    }
+
+    public async deletePrescription(uuid: string): Promise<void> {
+        const map: Map<string, Prescription> = await this.storage.get('DATA');
+        if (!isEmpty(map)) {
+            map.delete(uuid);
+        }
         await this.storage.set('DATA', map);
     }
 
@@ -55,8 +73,8 @@ export class PrescriptionService {
     }
 
     public calcPrescription(p: Prescription): Prescription {
-        p.totalResult.reset();
-        p.finalResult.reset();
+        this.resetFishModel(p.totalResult);
+        this.resetFishModel(p.finalResult);
         if (!isEmpty(p.items)) {
             p.items.forEach((item) => {
                 p.totalResult.peiBi += item.peiBi;
@@ -75,5 +93,15 @@ export class PrescriptionService {
             p.finalResult.jiaGe = round(p.totalResult.jiaGe / p.totalResult.peiBi, 2);
         }
         return p;
+    }
+
+    public resetFishModel(model: FishMeal): void {
+        model.peiBi = 0;
+        model.danBai = 0.0;
+        model.huiFen = 0.0;
+        model.xinXianDu = 0.0;
+        model.shuiFen = 0.0;
+        model.zhiFan = 0.0;
+        model.jiaGe = 0.0;
     }
 }

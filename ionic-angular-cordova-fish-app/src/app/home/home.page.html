@@ -9,7 +9,25 @@
     </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-    <ion-item class="data-grid-content" *ngFor="let p of list">
-        <ion-text>{{ p.uuid }}</ion-text>
-    </ion-item>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ng-container class="data-grid-content" *ngFor="let p of list">
+        <ion-card>
+            <ion-card-header>
+                <ion-item class="ion-no-padding">
+                    <ion-card-title>{{ p.title }}</ion-card-title>
+                    <ion-buttons slot="end">
+                        <ion-button color="primary" (click)="editPrescription(p.uuid)">
+                            <ion-icon name="create-outline"></ion-icon>
+                        </ion-button>
+                        <ion-button color="danger" (click)="deletePrescription(p.uuid)">
+                            <ion-icon name="close-outline"></ion-icon>
+                        </ion-button>
+                    </ion-buttons>
+                </ion-item>
+            </ion-card-header>
+            <ion-card-content>{{ p.objective }}</ion-card-content>
+        </ion-card>
+    </ng-container>
 </ion-content>

@@ -54,16 +54,6 @@ class FishMeal {
         this.zhiFan = zhiFan | 0.0;
         this.jiaGe = jiaGe | 0.0;
     }
-
-    reset(): void {
-        this.peiBi = 0;
-        this.danBai = 0.0;
-        this.huiFen = 0.0;
-        this.xinXianDu = 0.0;
-        this.shuiFen = 0.0;
-        this.zhiFan = 0.0;
-        this.jiaGe = 0.0;
-    }
 }
 
 export default FishMeal;
