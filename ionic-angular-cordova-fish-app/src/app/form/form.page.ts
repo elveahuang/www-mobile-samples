@@ -29,7 +29,6 @@ export class FormPage {
 
     public inputChange(): void {
         this.service.calcPrescription(this.entity);
-        console.log(this.entity);
     }
 
     public save(): void {

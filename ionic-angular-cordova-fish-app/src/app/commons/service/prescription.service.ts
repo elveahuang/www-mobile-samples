@@ -61,12 +61,11 @@ export class PrescriptionService {
         const p = new Prescription();
         p.items = new Array<FishMeal>();
         p.items.push(new FishMeal('鱼粉一'));
-        p.items.push(new FishMeal('鱼粉一'));
-        p.items.push(new FishMeal('鱼粉一'));
-        p.items.push(new FishMeal('鱼粉一'));
-        p.items.push(new FishMeal('鱼粉一'));
-        p.items.push(new FishMeal('鱼粉一'));
-        p.items.push(new FishMeal('鱼粉一'));
+        p.items.push(new FishMeal('鱼粉二'));
+        p.items.push(new FishMeal('鱼粉三'));
+        p.items.push(new FishMeal('鱼粉四'));
+        p.items.push(new FishMeal('鱼粉五'));
+        p.items.push(new FishMeal('鱼粉六'));
         p.totalResult = new FishMeal('合计', 0);
         p.finalResult = new FishMeal('结果', 0);
         return p;
