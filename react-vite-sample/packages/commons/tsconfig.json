@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "strict": true,
+        "strictNullChecks": false,
+        "jsx": "react-jsx",
+        "importHelpers": true,
+        "allowJs": true,
+        "moduleResolution": "node",
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "baseUrl": ".",
+        "types": ["vite/client"],
+        "paths": {
+            "@/*": ["src/*"],
+            "@commons/*": ["../commons/src/*"],
+            "@admin/*": ["../admin/src/*"],
+            "@webapp/*": ["../webapp/src/*"]
+        }
+    },
+    "include": ["src/**/*.ts", "src/**/*.tsx"],
+    "exclude": ["node_modules"]
+}

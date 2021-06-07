@@ -1,0 +1,21 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"],
+            "@commons/*": ["../commons/src/*"],
+            "@admin/*": ["../admin/src/*"],
+            "@webapp/*": ["../webapp/src/*"]
+        }
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+        "../commons/src/**/*.ts",
+        "../commons/src/**/*.tsx",
+        "../commons/src/**/*.vue"
+    ],
+    "exclude": ["node_modules"]
+}

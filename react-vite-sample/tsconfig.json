@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "lib": ["esnext", "dom"],
+        "allowJs": false,
+        "skipLibCheck": false,
+        "esModuleInterop": false,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "module": "esnext",
+        "moduleResolution": "Node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "strictNullChecks": false,
+        "importHelpers": true,
+        "sourceMap": true,
+        "types": ["vite/client", "node"],
+        "jsx": "react-jsx"
+    },
+    "include": ["./packages/admin/src", "./packages/commons/src", "./packages/webapp/src"]
+}

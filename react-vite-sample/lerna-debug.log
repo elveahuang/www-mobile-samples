@@ -1,0 +1,21 @@
+0 silly argv {
+0 silly argv   _: [ 'clean' ],
+0 silly argv   yes: true,
+0 silly argv   y: true,
+0 silly argv   lernaVersion: '4.0.0',
+0 silly argv   '$0': 'node_modules\\lerna\\cli.js'
+0 silly argv }
+1 notice cli v4.0.0
+2 verbose rootPath D:\Workspace\dfox\platform\ui
+3 info clean removing D:\Workspace\dfox\platform\ui\packages\admin\node_modules
+4 silly rimrafDir D:\Workspace\dfox\platform\ui\packages\admin\node_modules
+5 info clean removing D:\Workspace\dfox\platform\ui\packages\commons\node_modules
+6 silly rimrafDir D:\Workspace\dfox\platform\ui\packages\commons\node_modules
+7 info clean removing D:\Workspace\dfox\platform\ui\packages\webapp\node_modules
+8 silly rimrafDir D:\Workspace\dfox\platform\ui\packages\webapp\node_modules
+9 verbose rimrafDir removed D:\Workspace\dfox\platform\ui\packages\commons\node_modules
+10 verbose rimrafDir removed D:\Workspace\dfox\platform\ui\packages\webapp\node_modules
+11 error Error: Command failed with exit code 1: D:\Tools\node\node\node.exe D:\Workspace\dfox\platform\ui\node_modules\rimraf\bin.js --no-glob D:\Workspace\dfox\platform\ui\packages\admin\node_modules\
+11 error     at makeError (D:\Workspace\dfox\platform\ui\node_modules\execa\lib\error.js:60:11)
+11 error     at handlePromise (D:\Workspace\dfox\platform\ui\node_modules\execa\index.js:118:26)
+11 error     at processTicksAndRejections (internal/process/task_queues.js:95:5)
