@@ -1,0 +1,57 @@
+{
+    "name": "admin",
+    "version": "2.0.0",
+    "private": true,
+    "scripts": {
+        "start": "cross-env NODE_ENV=development craco start",
+        "build": "cross-env NODE_ENV=production craco build",
+        "dev": "npx dotenv -e .env.development craco build --watch",
+        "lint": "eslint --color --ext .js,.jsx,.ts,.tsx src --quiet",
+        "lint:fix": "eslint --color --ext .js,.jsx,.ts,.tsx src --quiet --fix",
+        "prettier": "prettier --write ."
+    },
+    "dependencies": {
+        "@ant-design/charts": "^1.1.10",
+        "@ant-design/pro-card": "^1.13.2",
+        "@ant-design/pro-descriptions": "^1.7.15",
+        "@ant-design/pro-form": "^1.27.1",
+        "@ant-design/pro-layout": "^6.19.3",
+        "@ant-design/pro-list": "^1.8.2",
+        "@ant-design/pro-skeleton": "^1.0.1",
+        "@ant-design/pro-table": "^2.39.2",
+        "antd": "^4.16.2"
+    },
+    "devDependencies": {
+        "@craco/craco": "^6.1.2",
+        "@dvhb/craco-extend-scope": "^1.0.1",
+        "autoprefixer": "^9.*",
+        "craco-alias": "^3.0.1",
+        "craco-antd": "^1.19.0",
+        "craco-babel-loader": "^0.1.4",
+        "craco-less": "^1.17.1",
+        "cross-env": "^7.0.3",
+        "less": "^4.1.1",
+        "less-loader": "^9.0.0",
+        "postcss": "^7.*",
+        "react-scripts": "^4.0.3",
+        "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.4"
+    },
+    "eslintConfig": {
+        "extends": [
+            "../../.eslintrc.js"
+        ]
+    },
+    "prettier": "../../.prettierrc.js",
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}
