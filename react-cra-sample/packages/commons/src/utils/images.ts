@@ -1,5 +1,7 @@
-import logo from '../assets/images/logo.svg';
+import logo from '../assets/images/test.svg';
 
-export default {
+const images = {
     logo: logo,
 };
+
+export default images;

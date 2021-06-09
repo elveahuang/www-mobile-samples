@@ -1,5 +1,5 @@
 import { defaultLang, LangType } from '@commons/types';
-import { getAccessToken, getRefreshToken } from '@commons/services/storage.service';
+import storage from '@commons/services/storage.service';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface AppState {
@@ -12,8 +12,8 @@ export interface AppState {
 export const initialAppState: AppState = {
     isLoading: false,
     lang: defaultLang,
-    accessToken: getAccessToken() ?? '',
-    refreshToken: getRefreshToken() ?? '',
+    accessToken: storage.getAccessToken() ?? '',
+    refreshToken: storage.getRefreshToken() ?? '',
 };
 
 export const appSlice = createSlice({
