@@ -20,6 +20,8 @@ export default defineConfig(({ mode }) => {
         resolve: {
             alias: {
                 '~antd': 'antd',
+                '~braft-editor': 'braft-editor',
+                '~video.js': 'video.js',
             },
         },
         css: {

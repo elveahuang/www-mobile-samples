@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash';
+import { isEmpty, isElement } from 'lodash';
 import { format, isAfter as dateIsAfter, isBefore as dateIsBefore, isSameYear, parseISO } from 'date-fns';
 
 /**
@@ -320,4 +320,24 @@ export const waitTime = (time: number = 100) => {
             resolve(true);
         }, time);
     });
+};
+
+/**
+ * 用于后台页面在页面有变动时动态设置iframe页面的高度
+ */
+export const dynIframeSize = () => {
+    try {
+        if (window && window.parent !== undefined) {
+            const wrapper = window.parent.document.querySelector('.content-wrapper');
+            const wrapperHeight = isElement(wrapper) ? wrapper.scrollHeight : 0;
+            const contentHeight = window.document.body.scrollHeight;
+
+            let main = window.parent.document.getElementById('mainFrame');
+            if (isElement(main)) {
+                main.style.minHeight = (contentHeight > wrapperHeight ? contentHeight : wrapperHeight) + 'px';
+            }
+        }
+    } catch (e) {
+        console.log(`dynIframeSize failed.`, e);
+    }
 };

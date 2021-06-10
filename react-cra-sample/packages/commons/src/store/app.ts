@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { defaultLang, LangType } from '@commons/types';
+import { defaultLang, LangType } from '@commons/utils/i18n';
 import { isDev } from '@commons/utils';
 import applicationVersion from '@commons/constants';
 
@@ -17,6 +17,9 @@ export const appSlice = createSlice({
     name: 'app',
     initialState: initialAppState,
     reducers: {
+        /**
+         * 应用初始化
+         */
         init: (state: AppState) => {
             if (isDev) {
                 console.log(`Current Version = ${applicationVersion}`);

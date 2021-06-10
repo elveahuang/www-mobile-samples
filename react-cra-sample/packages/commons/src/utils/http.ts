@@ -18,7 +18,7 @@ const cancelAllRequest = (message?: string) => {
  * 设置全局参数
  */
 axios.defaults.timeout = 300000;
-axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
+// axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 axios.defaults.withCredentials = false;
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 

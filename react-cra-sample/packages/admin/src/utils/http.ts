@@ -3,7 +3,7 @@ import { IntlFormatters } from 'react-intl';
 import { message } from 'antd';
 import store from '@/store';
 import { clear, setAccessToken, setRefreshToken } from '@commons/store/user';
-import { intl } from '@/locales/AppIntlProvider';
+import { intl } from '@commons/utils/i18n';
 
 class WebAppHttpInterceptors extends HttpInterceptors {
     clearToken() {
