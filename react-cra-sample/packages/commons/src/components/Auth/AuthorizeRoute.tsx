@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Redirect, Route, useHistory } from 'react-router-dom';
-import Authorize from '@/components/auth/Authorize';
+import Authorize from '@commons/components/Auth/Authorize';
 
 export interface AuthorizeRouteProps {
     authority: string | Array<string>;

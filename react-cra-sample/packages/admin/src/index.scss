@@ -1,11 +1,11 @@
 //
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-//
 @import '~braft-editor/dist/index.css';
 @import '~video.js/dist/video-js.css';
-@import '~antd/dist/antd.less';
+//
+@import '../../commons/src/webapp/styles/base.scss';
+@import '../../commons/src/webapp/styles/tailwind.scss';
+@import '../../commons/src/webapp/styles/antd.scss';
+
 //
 body {
     color: #333;

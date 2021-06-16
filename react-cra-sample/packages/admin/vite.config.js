@@ -1,37 +1,28 @@
 import { defineConfig, loadEnv } from 'vite';
+import path from 'path';
 import reactRefresh from '@vitejs/plugin-react-refresh';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import config from './config';
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd());
     const base = env.VITE_BASE_URL ?? '';
-    const ourDir = env.VITE_OUT_DIR ?? 'dist';
+    const out = env.VITE_OUT_DIR ?? 'dist';
 
     console.log(`Current mode - ${mode}`);
     console.log(`Current base - ${base}`);
-    console.log(`Current out dit - ${ourDir}`);
+    console.log(`Current out - ${out}`);
 
     return {
         base: base,
         build: {
-            outDir: ourDir,
+            outDir: out,
         },
         resolve: {
             alias: {
                 '~antd': 'antd',
                 '~braft-editor': 'braft-editor',
                 '~video.js': 'video.js',
-            },
-        },
-        css: {
-            preprocessorOptions: {
-                less: {
-                    javascriptEnabled: true,
-                    modifyVars: {
-                        '@primary-color': config.primaryColor,
-                    },
-                },
+                '~styles': path.join(__dirname, '../commons/src/styles'),
             },
         },
         plugins: [reactRefresh(), tsconfigPaths()],

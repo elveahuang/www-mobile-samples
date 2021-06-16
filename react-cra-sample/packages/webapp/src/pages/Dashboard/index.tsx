@@ -2,7 +2,7 @@ import { Avatar, Button, DatePicker, version } from 'antd';
 import images from '@commons/utils/images';
 import React, { FC } from 'react';
 
-const Demo: FC = () => {
+const Dashboard: FC = () => {
     return (
         <div className="app text-center">
             <h1 className="app-title">antd version: {version}</h1>
@@ -15,4 +15,4 @@ const Demo: FC = () => {
     );
 };
 
-export default Demo;
+export default Dashboard;

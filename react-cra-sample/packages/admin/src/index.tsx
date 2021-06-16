@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import App from '@/App';
 import { setup } from '@/utils';
 //
-import '@/index.less';
+import '@/index.scss';
 
 setup();
 

@@ -1,7 +1,7 @@
-const config = require('./config');
+const config = require('../../scripts/config');
 
 module.exports = {
-    purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+    purge: ['./src/**/*.{js,jsx,ts,tsx}', './index.html'],
     darkMode: false,
     important: true,
     theme: {

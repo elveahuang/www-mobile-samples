@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppSelector } from '@/hooks';
+import { useAppSelector } from '@commons/hooks';
 import { check } from '@commons/utils/auth';
 
 export interface AuthorizeProps {

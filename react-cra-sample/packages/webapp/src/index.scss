@@ -1,0 +1,33 @@
+//
+@import '~braft-editor/dist/index.css';
+@import '~video.js/dist/video-js.css';
+//
+@import '../../commons/src/webapp/styles/base.scss';
+@import '../../commons/src/webapp/styles/tailwind.scss';
+@import '../../commons/src/webapp/styles/antd.scss';
+
+//
+body {
+    color: #333;
+    background-color: #ecf0f5;
+}
+
+body {
+    @apply h-full;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+html {
+    @apply h-full box-border;
+}
+
+#root {
+    @apply h-full;
+}
+
+.ant-layout {
+    @apply h-full;
+}

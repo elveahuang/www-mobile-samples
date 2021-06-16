@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Spin } from 'antd';
 
-const Index: FC = () => {
+const Home: FC = () => {
     return (
         <div className="app text-center">
             <Spin />
@@ -9,4 +9,4 @@ const Index: FC = () => {
     );
 };
 
-export default Index;
+export default Home;

@@ -1,39 +1,78 @@
-import React, { FC } from 'react';
+import React, { FC, lazy, Suspense, useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
-import { Avatar, Button, DatePicker, version } from 'antd';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { ConfigProvider, Spin } from 'antd';
+import { RawIntlProvider, useIntl } from 'react-intl';
+import { Helmet } from 'react-helmet';
+import { useMount, useThrottleFn } from 'ahooks';
 //
-import images from '@commons/utils/images';
+import { createReactIntl } from '@commons/utils/i18n';
+import { antdLocalProvider } from '@commons/webapp/utils/antd';
+import { dynIframeSize } from '@commons/utils';
+import Loading from '@commons/webapp/components/Loading';
 //
-import '@/App.less';
-import store from '@/store';
-import { test } from '@/store/app';
-import { useAppSelector, useAppDispatch } from '@/hooks';
+import '@/App.scss';
+import store from '@commons/store';
+import { useAppSelector } from '@commons/hooks';
+import { Home } from '@/pages';
+//
+const AdminLayout = lazy(() => import('@/layouts/AdminLayout'));
 
 const App: FC = () => {
-    return (
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setLoading(false);
+    }, []);
+
+    const { run } = useThrottleFn(() => {
+        dynIframeSize();
+    });
+
+    useMount(() => {
+        dynIframeSize();
+        window.onresize = () => run;
+    });
+
+    return loading ? (
+        <Loading />
+    ) : (
         <Provider store={store}>
             <AppContainer />
         </Provider>
     );
 };
 
-const AppContainer: FC = () => {
-    const dispatch = useAppDispatch();
-    const accessToken = useAppSelector((state) => state.app.accessToken);
+const AppTitle = (): React.ReactElement => {
+    const intl = useIntl();
+    return (
+        <Helmet
+            title={intl.formatMessage({
+                id: 'site_title',
+            })}
+        />
+    );
+};
 
-    dispatch(test('World'));
+const AppContainer: FC = () => {
+    const { direction, lang } = useAppSelector((state) => state.app);
 
     return (
-        <div className="app text-center">
-            <h1 className="app-title">antd version: {version}</h1>
-            <DatePicker />
-            <Button type="primary" style={{ marginLeft: 8 }}>
-                Primary Button 1 2 3
-            </Button>
-            {accessToken}
-            <Avatar size={64} src={images.logo} />
-            <img alt="Avatar" src={images.logo} />
-        </div>
+        <RawIntlProvider value={createReactIntl(lang)}>
+            <ConfigProvider direction={direction} locale={antdLocalProvider[lang]}>
+                <React.Fragment>
+                    <AppTitle />
+                    <Router>
+                        <Suspense fallback={<Spin />}>
+                            <Switch>
+                                <Route exact path="/" component={Home} />
+                                <Route path="/" component={AdminLayout} />
+                            </Switch>
+                        </Suspense>
+                    </Router>
+                </React.Fragment>
+            </ConfigProvider>
+        </RawIntlProvider>
     );
 };
 

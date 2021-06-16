@@ -1,16 +1,25 @@
 import Credentials from '@commons/types/credentials';
 
-/**
- * 用户登录
- * @param credentials
- */
-export const login = (credentials: Credentials): any => {
-    return null;
+const AuthService = {
+    /**
+     * 用户登录
+     * @param credentials
+     */
+    login(credentials: Credentials): any {
+        return null;
+    },
+    /**
+     * 获取用户信息
+     */
+    getUserInfo(): any {
+        return null;
+    },
+    /**
+     * 刷新凭证
+     */
+    refresh(): any {
+        return null;
+    },
 };
 
-/**
- * 获取用户信息
- */
-export const getUserInfo = (): any => {
-    return null;
-};
+export default AuthService;

@@ -21,14 +21,14 @@
         "@capacitor/cli": "^3.0.1",
         "@craco/craco": "^6.1.2",
         "@dvhb/craco-extend-scope": "^1.0.1",
+        "@tailwindcss/postcss7-compat": "^2.1.4",
         "autoprefixer": "^9.*",
         "craco-alias": "^3.0.1",
         "craco-babel-loader": "^0.1.4",
         "cross-env": "^7.0.3",
         "postcss": "^7.*",
         "react-scripts": "^4.0.3",
-        "sass": "^1.34.1",
-        "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.4"
+        "sass": "^1.35.1"
     },
     "eslintConfig": {
         "extends": [
