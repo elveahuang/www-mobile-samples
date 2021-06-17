@@ -4,7 +4,7 @@
     "scripts": {
         "lint": "eslint ./packages/**/*.{ts,tsx,js,jsx}",
         "lint:fix": "eslint ./packages/**/*.{ts,tsx,js,jsx} --fix",
-        "prettier": "prettier --write ./packages/**/*.{ts,tsx,js,json,scss}"
+        "prettier": "prettier --write ./packages/**/*.{ts,tsx,js,jsx,json,scss}"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^1.6.0",
@@ -25,7 +25,7 @@
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-helmet": "^6.1.0",
-        "react-hook-form": "^7.8.7",
+        "react-hook-form": "^7.8.8",
         "react-intl": "^5.20.2",
         "react-redux": "^7.2.4",
         "react-router-dom": "^5.2.0",
@@ -37,8 +37,8 @@
         "weixin-js-sdk": "^1.6.0"
     },
     "devDependencies": {
-        "@types/classnames": "^2.2.11",
         "@types/color": "^3.0.1",
+        "@types/crypto-js": "^4.0.1",
         "@types/draft-js": "^0.11.3",
         "@types/jsonwebtoken": "^8.5.1",
         "@types/jweixin": "^1.0.7",
@@ -70,6 +70,6 @@
         "lint-staged": "^11.0.0",
         "mockjs": "^1.1.0",
         "prettier": "2.3.1",
-        "typescript": "^4.3.2"
+        "typescript": "^4.3.3"
     }
 }

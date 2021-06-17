@@ -7,6 +7,9 @@ import { ellipse, square, triangle } from 'ionicons/icons';
 import Home from '@/pages/Home';
 import Discover from '@/pages/Discover';
 import Me from '@/pages/Me';
+import environment from '@commons/utils/environment';
+
+console.log(environment.server);
 
 /**
  * App

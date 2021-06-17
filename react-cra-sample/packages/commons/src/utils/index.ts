@@ -1,4 +1,4 @@
-import { isEmpty, isElement } from 'lodash';
+import { isElement, isEmpty } from 'lodash';
 import { format, isAfter as dateIsAfter, isBefore as dateIsBefore, isSameYear, parseISO } from 'date-fns';
 
 /**

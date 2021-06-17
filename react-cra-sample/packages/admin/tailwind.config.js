@@ -1,13 +1,12 @@
-const config = require('../../scripts/config');
-
 module.exports = {
-    purge: ['./src/**/*.{js,jsx,ts,tsx}', './index.html'],
+    purge: ['./src/**/*.{js,jsx,ts,tsx,tsx}', './public/index.html'],
     darkMode: false,
     important: true,
     theme: {
         extend: {
             colors: {
-                primary: config.primaryColor,
+                'color-primary': 'var(--color-primary)',
+                'color-secondary': 'var(--color-secondary)',
             },
         },
         screens: {
@@ -19,8 +18,4 @@ module.exports = {
             xxl: { min: '1600px' },
         },
     },
-    variants: {
-        extend: {},
-    },
-    plugins: [],
 };

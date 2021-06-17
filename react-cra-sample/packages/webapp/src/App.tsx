@@ -4,11 +4,9 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { ConfigProvider, Spin } from 'antd';
 import { RawIntlProvider, useIntl } from 'react-intl';
 import { Helmet } from 'react-helmet';
-import { useMount, useThrottleFn } from 'ahooks';
 //
 import { createReactIntl } from '@commons/utils/i18n';
 import { antdLocalProvider } from '@commons/webapp/utils/antd';
-import { dynIframeSize } from '@commons/utils';
 import Loading from '@commons/webapp/components/Loading';
 //
 import '@/App.scss';
@@ -24,15 +22,6 @@ const App: FC = () => {
     useEffect(() => {
         setLoading(false);
     }, []);
-
-    const { run } = useThrottleFn(() => {
-        dynIframeSize();
-    });
-
-    useMount(() => {
-        dynIframeSize();
-        window.onresize = () => run;
-    });
 
     return loading ? (
         <Loading />

@@ -1,8 +1,8 @@
-import qs from 'qs';
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse, Canceler } from 'axios';
+import { isEmpty } from 'lodash';
+//
 import StorageService from '@commons/services/storage.service';
-import validator from 'validator';
-import isEmpty = validator.isEmpty;
+import environment from '@commons/utils/environment';
 
 /**
  * 取消请求
@@ -14,22 +14,119 @@ const cancelAllRequest = (message?: string) => {
 };
 
 /**
+ * 超时判断
+ */
+const isTimeoutError = (error: AxiosError) => error.code === 'ECONNABORTED' && error.message.includes('timeout');
+
+/**
  * 设置全局参数
  */
 axios.defaults.timeout = 300000;
-// axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
-axios.defaults.withCredentials = false;
-axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.defaults.withCredentials = true;
 
 /**
- * 封装实例
+ * 创建实例
  */
-const http = axios.create({});
+const http = axios.create({
+    baseURL: environment.server,
+});
+
+const cancelRequestConfig: AxiosRequestConfig = {
+    cancelToken: new CancelToken((cancel) => {
+        cancels.push(cancel);
+    }),
+};
 
 /**
- * axios超时判断
+ * Get
  */
-const isTimeoutError = (err: AxiosError) => err.code === 'ECONNABORTED' && err.message.includes('timeout');
+const getRequestConfig: AxiosRequestConfig = {
+    ...cancelRequestConfig,
+};
+
+function get<T = any, R = AxiosResponse<T>>(
+    url: string,
+    params: any = {},
+    config: AxiosRequestConfig = getRequestConfig,
+): Promise<R> {
+    config.params = params;
+    return http.get(url, config);
+}
+
+/**
+ * Post
+ */
+const postRequestConfig: AxiosRequestConfig = {
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    ...cancelRequestConfig,
+};
+
+function post<T = any, R = AxiosResponse<T>>(
+    url: string,
+    data: any = {},
+    config: AxiosRequestConfig = postRequestConfig,
+): Promise<R> {
+    return http.post(url, data, config);
+}
+
+/**
+ * Post Json
+ */
+const postJsonRequestConfig: AxiosRequestConfig = {
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    transformRequest: (data: any) => {
+        return JSON.stringify(data);
+    },
+    ...cancelRequestConfig,
+};
+
+function postJson<T = any, R = AxiosResponse<T>>(
+    url: string,
+    data: any = {},
+    config: AxiosRequestConfig = postJsonRequestConfig,
+): Promise<R> {
+    return http.post(url, data, config);
+}
+
+/**
+ * Post FormBody
+ */
+const postFormRequestConfig: AxiosRequestConfig = {
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    ...cancelRequestConfig,
+};
+
+function postForm<T = any, R = AxiosResponse<T>>(
+    url: string,
+    data: FormData = new FormData(),
+    config: AxiosRequestConfig = postFormRequestConfig,
+): Promise<R> {
+    return http.post(url, data, config);
+}
+
+/**
+ * Post Multipart
+ */
+const postMultipartRequestConfig: AxiosRequestConfig = {
+    headers: {
+        'Content-Type': 'multipart/form-data',
+    },
+    ...cancelRequestConfig,
+};
+
+function postMultipart<T = any, R = AxiosResponse<T>>(
+    url: string,
+    data: any = {},
+    config: AxiosRequestConfig = postMultipartRequestConfig,
+): Promise<R> {
+    return http.post(url, data, config);
+}
 
 /**
  * Authorization
@@ -47,14 +144,41 @@ const setupAuthorizationInterceptor = () => {
     });
 };
 
-interface ResponseInterceptorManager<AxiosResponse> {
-    errorHandler?: (response: AxiosResponse) => AxiosResponse | Promise<AxiosResponse>;
-}
-
 /**
  * Response
  */
-const setupResponseInterceptor = (manager: ResponseInterceptorManager<AxiosResponse> = {}) => {};
+interface ResponseInterceptorManager<AxiosResponse> {
+    exceptionHandler?: (response: AxiosResponse) => AxiosResponse | Promise<AxiosResponse>;
+    timeoutHandler?: (error: AxiosError) => AxiosError | Promise<AxiosError>;
+    errorHandler?: (error: AxiosError) => AxiosError | Promise<AxiosError>;
+}
+
+const setupResponseInterceptor = (manager: ResponseInterceptorManager<AxiosResponse> = {}) => {
+    http.interceptors.response.use(
+        (response: AxiosResponse) => {
+            return response;
+        },
+        (error: AxiosError) => {
+            if (error.response) {
+                const response = error.response as AxiosResponse;
+                if (manager && manager.exceptionHandler) {
+                    manager.exceptionHandler(response);
+                }
+            } else {
+                if (isTimeoutError(error)) {
+                    if (manager && manager.timeoutHandler) {
+                        manager.timeoutHandler(error);
+                    }
+                } else {
+                    if (manager && manager.errorHandler) {
+                        manager.errorHandler(error);
+                    }
+                }
+            }
+            return Promise.reject(error);
+        },
+    );
+};
 
 /**
  * 默认设置
@@ -64,126 +188,18 @@ const setupAxios = () => {
     setupResponseInterceptor();
 };
 
-/**
- * 文件上传的表单头信息
- */
-const postMultipartHeaders: AxiosRequestConfig = {
-    headers: {
-        'Content-Type': 'multipart/form-data',
-    },
-    transformRequest: (data: any) => {
-        return data;
-    },
-};
-
-/**
- * 文件上传的表单头信息
- */
-const postFormHeaders: AxiosRequestConfig = {
-    headers: {
-        'Content-Type': 'multipart/form-data',
-    },
-    transformRequest: (data: any) => {
-        return data;
-    },
-};
-
-/**
- * Json数据的表单头信息
- */
-const postJsonHeaders: AxiosRequestConfig = {
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    transformRequest: (data: any) => {
-        return JSON.stringify(data);
-    },
-};
-
-/**
- * 表单头信息
- */
-const postHeaders: AxiosRequestConfig = {
-    transformRequest: (data: any, headers: any) => {
-        return qs.stringify(data);
-    },
-    paramsSerializer: (data: any = {}) => {
-        return qs.stringify(data);
-    },
-};
-
-// Get
-const get = <T = any, P = any, R = AxiosResponse<T>>(
-    url: string,
-    params?: P,
-    config: AxiosRequestConfig = {},
-): Promise<R> => {
-    config.params = params || {};
-    return http.get(url, {
-        cancelToken: new CancelToken((cancel) => {
-            cancels.push(cancel);
-        }),
-        ...config,
-    });
-};
-
-// Post
-const post = <T = any, P = any, R = AxiosResponse<T>>(
-    url: string,
-    data?: P,
-    config: AxiosRequestConfig = postHeaders,
-): Promise<R> => {
-    return http.post(url, data || {}, {
-        cancelToken: new CancelToken((cancel) => {
-            cancels.push(cancel);
-        }),
-        ...config,
-    });
-};
-
-// Post
-const postJson = <T = any, P = any, R = AxiosResponse<T>>(
-    url: string,
-    data?: P,
-    config: AxiosRequestConfig = postJsonHeaders,
-): Promise<R> => {
-    return http.post(url, data || {}, {
-        cancelToken: new CancelToken((cancel) => {
-            cancels.push(cancel);
-        }),
-        ...config,
-    });
-};
-
-// Post FormBody
-const postForm = <T = any, R = AxiosResponse<T>>(
-    url: string,
-    data: FormData = new FormData(),
-    config: AxiosRequestConfig = postFormHeaders,
-): Promise<R> => {
-    return http.post(url, data, {
-        cancelToken: new CancelToken((cancel) => {
-            cancels.push(cancel);
-        }),
-        ...config,
-    });
-};
-
-// Upload
-const postMultiple = <T = any, P = any, R = AxiosResponse<T>>(
-    url: string,
-    data?: P,
-    config: AxiosRequestConfig = postMultipartHeaders,
-): Promise<R> => {
-    return http.post(url, data || {}, {
-        cancelToken: new CancelToken((cancel) => {
-            cancels.push(cancel);
-        }),
-        ...config,
-    });
-};
-
 export default http;
-export { axios, isTimeoutError, get, post, postForm, postJson, postMultiple };
-export { postHeaders, postFormHeaders, postJsonHeaders, postMultipartHeaders };
+
+export { axios, isTimeoutError, get, post, postForm, postJson, postMultipart };
+
+export {
+    getRequestConfig,
+    postRequestConfig,
+    postFormRequestConfig,
+    postJsonRequestConfig,
+    postMultipartRequestConfig,
+};
+
+export { setupAxios, setupAuthorizationInterceptor, setupResponseInterceptor };
+
 export { cancelAllRequest, cancels, CancelToken };
