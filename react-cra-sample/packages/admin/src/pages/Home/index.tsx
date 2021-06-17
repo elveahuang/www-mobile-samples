@@ -4,7 +4,7 @@ import { Spin } from 'antd';
 const Home: FC = () => {
     return (
         <div className="app text-center">
-            <Spin />
+            <Spin /> 123456
         </div>
     );
 };

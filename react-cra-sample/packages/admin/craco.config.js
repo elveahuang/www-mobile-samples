@@ -19,12 +19,21 @@ module.exports = {
         plugins: [new CaseSensitivePathsPlugin(), new WebpackBar()],
         configure: (webpackConfig, { env }) => {
             console.log(`webpack configure env - ${env}`);
-            webpackConfig = {
-                watch: true,
-                ...webpackConfig,
-            };
+            if (env !== 'production') {
+                console.log(`webpack configure set out put path - ${process.env.BUILD_PATH}`);
+                webpackConfig.output.path = process.env.BUILD_PATH;
+            }
             return webpackConfig;
         },
+    },
+    devServer: (devServerConfig, { env, paths, proxy, allowedHost }) => {
+        console.log(`webpack devServer env - ${env}`);
+        if (env !== 'production') {
+            devServerConfig.writeToDisk = true;
+            console.log(`webpack devServer writeToDisk enabled. `);
+            console.log(devServerConfig);
+        }
+        return devServerConfig;
     },
     plugins: [
         {
