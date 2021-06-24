@@ -1,37 +1,37 @@
 {
-    "name": "vite-project",
-    "version": "0.0.0",
+    "name": "svelte-sample",
+    "version": "0.0.1",
     "scripts": {
-        "dev": "vite",
+        "start": "vite",
         "build": "vite build",
         "serve": "vite preview",
         "lint": "eslint --color --ext .js,.jsx,.ts,.tsx src --quiet --fix",
-        "prettier": "prettier --write src"
+        "prettier": "prettier --write ."
     },
     "dependencies": {
-        "date-fns": "^2.21.3",
+        "date-fns": "^2.22.1",
         "lodash": "^4.17.21",
-        "tailwindcss": "^2.1.2",
-        "svelte": "^3.38.2"
+        "tailwindcss": "^2.2.4",
+        "svelte": "^3.38.3"
     },
     "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "^4.25.0",
-        "@typescript-eslint/parser": "^4.25.0",
-        "@sveltejs/vite-plugin-svelte": "^1.0.0-next.10",
-        "eslint": "^7.27.0",
+        "@typescript-eslint/eslint-plugin": "^4.28.0",
+        "@typescript-eslint/parser": "^4.28.0",
+        "@sveltejs/vite-plugin-svelte": "^1.0.0-next.11",
+        "eslint": "^7.29.0",
         "eslint-plugin-prettier": "^3.4.0",
-        "eslint-plugin-import": "^2.23.3",
+        "eslint-plugin-import": "^2.23.4",
         "eslint-plugin-node": "^11.1.0",
         "eslint-plugin-promise": "^5.1.0",
         "eslint-plugin-standard": "^5.0.0",
         "eslint-config-prettier": "^8.3.0",
         "eslint-config-standard": "^16.0.3",
         "eslint-plugin-svelte3": "^3.2.0",
-        "prettier": "^2.3.0",
-        "prettier-plugin-svelte": "^2.3.0",
-        "svelte": "^3.38.2",
+        "prettier": "^2.3.1",
+        "prettier-plugin-svelte": "^2.3.1",
+        "svelte": "^3.38.3",
         "svelte-preprocess": "^4.7.3",
-        "typescript": "^4.3.2",
-        "vite": "^2.3.4"
+        "typescript": "^4.3.4",
+        "vite": "^2.3.8"
     }
 }

@@ -1,3 +1,3 @@
 module.exports = {
-    reject: ['typescript', 'node-sass'],
+    reject: ['typescript', 'rxjs'],
 };
